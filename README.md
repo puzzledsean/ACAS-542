@@ -1,6 +1,4 @@
-# ACAS-542
-
-## CS542 Project for Aircraft Collision Avoidance System
+# CS542 Project for Aircraft Collision Avoidance System
 
 ### Members
 Tyrone Hou, Mark Bestavros, Brian Siao, Sean Zhang
