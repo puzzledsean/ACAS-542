@@ -1,5 +1,6 @@
 import requests
 import shutil
+import os
 
 def download_file(url):
     '''
@@ -24,9 +25,15 @@ def scrape():
     BASE_URL = 'https://opensky-network.org/datasets/states/{date}/{num}/states_{date}-{num}.csv.tar'
 
     for date in dates:
+        
         print('========================================================================')
         print('============ Date: {}'.format(date))
         for num in nums:
+            fname = 'states_{}-{}.csv.tar'.format(date, num)
+            if os.path.isfile(fname):
+                print('Skipping. File {} already exists...'.format(fname))
+                continue
+
             print('-------')
             download_url = BASE_URL.format(date=date, num=num)
             print('About to download date: {}, number: {}...'.format(date, num))
