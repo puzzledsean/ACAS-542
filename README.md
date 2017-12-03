@@ -14,11 +14,15 @@ Reinforcement Learning: An Introduction </br>
 http://ufal.mff.cuni.cz/~straka/courses/npfl114/2016/sutton-bookdraft2016sep.pdf
 
 
-### TODO:
-- clean data more? (zig zags) might not be necessary
-- predict more than 1 future timestep (how many?)
-- train hyperparameters by using many different combinations on training data and then getting the ones that perform the best with the validation set
-- train model on scc with all data
-- get model (doesn't have to be well-trained), take multiple planes as input, and predict if future collision
-- hard code plane action when NMAC detected (base case)
-- use RNN Q-learning to create a policy for when NMAC detected
+### Next steps:
+1. Data Collection <br>
+  a. Scraping and downloading data <br>
+  b. Padding data so that each training example has the same sequence length
+
+2. RNN Model <br>
+  a. Train the model with the newly padded data (for a single plane) <br>
+  b. Change the output of the model (change number time steps that the model predicts)
+
+3. Policy Prediction (potential options): <br>
+  a. Hard code a manual policy when NMAC is detected <br>
+  b. Q-learning --> Reinforcement learning algorithm to create policy for action selection
