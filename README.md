@@ -14,11 +14,28 @@ Reinforcement Learning: An Introduction </br>
 http://ufal.mff.cuni.cz/~straka/courses/npfl114/2016/sutton-bookdraft2016sep.pdf
 
 
-### TODO:
-- clean data more? (zig zags) might not be necessary
-- predict more than 1 future timestep (how many?)
-- train hyperparameters by using many different combinations on training data and then getting the ones that perform the best with the validation set
-- train model on scc with all data
-- get model (doesn't have to be well-trained), take multiple planes as input, and predict if future collision
-- hard code plane action when NMAC detected (base case)
-- use RNN Q-learning to create a policy for when NMAC detected
+### Next steps:
+1. Data Collection <br>
+  a. Scraping and downloading data <br>
+  b. Download data onto scc servers 
+
+2. RNN Model <br>
+  a. Padding data so that each training example has the same sequence length <br>
+  a. Train the model with the newly padded data (for a single plane) <br>
+  b. Change the output of the model (change number of time steps that the model predicts)
+
+3. Policy Prediction (potential options): <br>
+  a. Hard code a manual policy when NMAC is detected <br>
+  b. Q-learning --> Reinforcement learning algorithm to create policy for action selection
+  
+### Specifics of Q-learning model
+Pieces that we will need to implement:
+- Q function: Defines the *expected future reward* of taking action a in state s
+  - Approximated using a Neural network model
+  - input: state of plane
+  - output: list of probabilities/rewards of the possible actions in the given state
+- Transition Function:
+  - p(s, a, s') := probability of transitioning to state s' given you are currently in state s and you take action a
+  - Define deterministic probabilities
+- Simulation for us to "poke" the q function to train and learn the best rewards based on transition function
+  - Already given a simulation, need to look into how to use
